@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="LblTitle">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTitle</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTitle</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblInvDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblInvDate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblInvDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblCompDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCompDate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCompDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblCompBy">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCompBy</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCompBy</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblMat">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblMat</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblMat</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblLabor">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblLabor</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblLabor</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblEquip">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblEquip</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblEquip</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblLineTot">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblLineTot</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblLineTot</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblWONo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblWONo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblWONo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblServFor">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblServFor</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblServFor</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblPurpose">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblPurpose</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblPurpose</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblDate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblVend">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblVend</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblVend</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblQty">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblQty</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblQty</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblPO">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblPO</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblPO</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblMarkup">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblMarkup</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblMarkup</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblUnitPrice">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblUnitPrice</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblUnitPrice</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblAmt">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblAmt</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblAmt</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblTotParts">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTotParts</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTotParts</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblServPerson">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblServPerson</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblServPerson</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblInits">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblInits</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblInits</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblReg">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblReg</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblReg</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblOT">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblOT</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblOT</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblRate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblRate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblRate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblOTRate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblOTRate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblOTRate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblTotLabor">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTotLabor</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTotLabor</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblRegHrs">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblRegHrs</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblRegHrs</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblRateHr">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblRateHr</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblRateHr</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblTotEquip">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTotEquip</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTotEquip</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblAmtDue">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblAmtDue</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblAmtDue</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="SIHNo">
+          <DataField>SIHNo</DataField>
+        </Field>
+        <Field Name="SIInvDate">
+          <DataField>SIInvDate</DataField>
+        </Field>
+        <Field Name="Logo">
+          <DataField>Logo</DataField>
+        </Field>
+        <Field Name="CompanyAddress1">
+          <DataField>CompanyAddress1</DataField>
+        </Field>
+        <Field Name="CompanyAddress2">
+          <DataField>CompanyAddress2</DataField>
+        </Field>
+        <Field Name="CompanyAddress3">
+          <DataField>CompanyAddress3</DataField>
+        </Field>
+        <Field Name="CompanyAddress4">
+          <DataField>CompanyAddress4</DataField>
+        </Field>
+        <Field Name="CompanyAddress5">
+          <DataField>CompanyAddress5</DataField>
+        </Field>
+        <Field Name="CompanyAddress6">
+          <DataField>CompanyAddress6</DataField>
+        </Field>
+        <Field Name="CompanyAddress7">
+          <DataField>CompanyAddress7</DataField>
+        </Field>
+        <Field Name="CompanyAddress8">
+          <DataField>CompanyAddress8</DataField>
+        </Field>
+        <Field Name="BillToAddress1">
+          <DataField>BillToAddress1</DataField>
+        </Field>
+        <Field Name="BillToAddress2">
+          <DataField>BillToAddress2</DataField>
+        </Field>
+        <Field Name="BillToAddress3">
+          <DataField>BillToAddress3</DataField>
+        </Field>
+        <Field Name="BillToAddress4">
+          <DataField>BillToAddress4</DataField>
+        </Field>
+        <Field Name="BillToAddress5">
+          <DataField>BillToAddress5</DataField>
+        </Field>
+        <Field Name="BillToAddress6">
+          <DataField>BillToAddress6</DataField>
+        </Field>
+        <Field Name="BillToAddress7">
+          <DataField>BillToAddress7</DataField>
+        </Field>
+        <Field Name="BillToAddress8">
+          <DataField>BillToAddress8</DataField>
+        </Field>
+        <Field Name="CompDate">
+          <DataField>CompDate</DataField>
+        </Field>
+        <Field Name="Purpose">
+          <DataField>Purpose</DataField>
+        </Field>
+        <Field Name="ShipToAddr">
+          <DataField>ShipToAddr</DataField>
+        </Field>
+        <Field Name="DocDate">
+          <DataField>DocDate</DataField>
+        </Field>
+        <Field Name="SILBLineNo">
+          <DataField>SILBLineNo</DataField>
+        </Field>
+        <Field Name="SILBType">
+          <DataField>SILBType</DataField>
+        </Field>
+        <Field Name="SILBDocNo">
+          <DataField>SILBDocNo</DataField>
+        </Field>
+        <Field Name="SILBCompDate">
+          <DataField>SILBCompDate</DataField>
+        </Field>
+        <Field Name="SILBMaterial">
+          <DataField>SILBMaterial</DataField>
+        </Field>
+        <Field Name="SILBMaterialFormat">
+          <DataField>SILBMaterialFormat</DataField>
+        </Field>
+        <Field Name="SILBLabor">
+          <DataField>SILBLabor</DataField>
+        </Field>
+        <Field Name="SILBLaborFormat">
+          <DataField>SILBLaborFormat</DataField>
+        </Field>
+        <Field Name="SILBEquipment">
+          <DataField>SILBEquipment</DataField>
+        </Field>
+        <Field Name="SILBEquipmentFormat">
+          <DataField>SILBEquipmentFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

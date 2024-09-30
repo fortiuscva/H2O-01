@@ -1,0 +1,32 @@
+{
+  "id": "20b1a6e0-7523-4253-84e4-c4a5d2b731fa",
+  "name": "H2O-01",
+  "publisher": "Impact Networking",
+  "version": "1.0.0.8",
+  "brief": "Meters & Resources",
+  "description": "Meters & Resources",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50199
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "11.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}

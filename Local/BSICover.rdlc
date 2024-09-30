@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="LblTitle">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTitle</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTitle</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblInvNo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblInvNo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblInvNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblInvDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblInvDate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblInvDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblChecks">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblChecks</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblChecks</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblBillTo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblBillTo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblBillTo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblCat">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCat</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCat</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblAmt">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblAmt</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblAmt</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblTotal">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTotal</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTotal</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="InvNo">
+          <DataField>InvNo</DataField>
+        </Field>
+        <Field Name="DocDate">
+          <DataField>DocDate</DataField>
+        </Field>
+        <Field Name="DimCode">
+          <DataField>DimCode</DataField>
+        </Field>
+        <Field Name="DimName">
+          <DataField>DimName</DataField>
+        </Field>
+        <Field Name="Amt">
+          <DataField>Amt</DataField>
+        </Field>
+        <Field Name="AmtFormat">
+          <DataField>AmtFormat</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="CompanyAddr7">
+          <DataField>CompanyAddr7</DataField>
+        </Field>
+        <Field Name="CompanyAddr8">
+          <DataField>CompanyAddr8</DataField>
+        </Field>
+        <Field Name="Logo">
+          <DataField>Logo</DataField>
+        </Field>
+        <Field Name="BillToAddr1">
+          <DataField>BillToAddr1</DataField>
+        </Field>
+        <Field Name="BillToAddr2">
+          <DataField>BillToAddr2</DataField>
+        </Field>
+        <Field Name="BillToAddr3">
+          <DataField>BillToAddr3</DataField>
+        </Field>
+        <Field Name="BillToAddr4">
+          <DataField>BillToAddr4</DataField>
+        </Field>
+        <Field Name="BillToAddr5">
+          <DataField>BillToAddr5</DataField>
+        </Field>
+        <Field Name="BillToAddr6">
+          <DataField>BillToAddr6</DataField>
+        </Field>
+        <Field Name="BillToAddr7">
+          <DataField>BillToAddr7</DataField>
+        </Field>
+        <Field Name="BillToAddr8">
+          <DataField>BillToAddr8</DataField>
+        </Field>
+        <Field Name="Phrase">
+          <DataField>Phrase</DataField>
+        </Field>
+        <Field Name="DatePrint">
+          <DataField>DatePrint</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

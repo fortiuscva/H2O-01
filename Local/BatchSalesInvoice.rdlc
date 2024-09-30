@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="LblTitle">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTitle</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTitle</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblDate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblCompDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCompDate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCompDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblMat">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblMat</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblMat</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblLabor">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblLabor</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblLabor</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblEquip">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblEquip</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblEquip</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblLineTot">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblLineTot</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblLineTot</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="SIHNo">
+          <DataField>SIHNo</DataField>
+        </Field>
+        <Field Name="SILALineNo">
+          <DataField>SILALineNo</DataField>
+        </Field>
+        <Field Name="SILAType">
+          <DataField>SILAType</DataField>
+        </Field>
+        <Field Name="SILADimName">
+          <DataField>SILADimName</DataField>
+        </Field>
+        <Field Name="SILASD1Code">
+          <DataField>SILASD1Code</DataField>
+        </Field>
+        <Field Name="SILASD2Code">
+          <DataField>SILASD2Code</DataField>
+        </Field>
+        <Field Name="SILAQty">
+          <DataField>SILAQty</DataField>
+        </Field>
+        <Field Name="SILAQtyFormat">
+          <DataField>SILAQtyFormat</DataField>
+        </Field>
+        <Field Name="SILAAmount">
+          <DataField>SILAAmount</DataField>
+        </Field>
+        <Field Name="SILAAmountFormat">
+          <DataField>SILAAmountFormat</DataField>
+        </Field>
+        <Field Name="SILBLineNo">
+          <DataField>SILBLineNo</DataField>
+        </Field>
+        <Field Name="SILBType">
+          <DataField>SILBType</DataField>
+        </Field>
+        <Field Name="SILBDocNo">
+          <DataField>SILBDocNo</DataField>
+        </Field>
+        <Field Name="SILBCompDate">
+          <DataField>SILBCompDate</DataField>
+        </Field>
+        <Field Name="SILBMaterial">
+          <DataField>SILBMaterial</DataField>
+        </Field>
+        <Field Name="SILBMaterialFormat">
+          <DataField>SILBMaterialFormat</DataField>
+        </Field>
+        <Field Name="SILBLabor">
+          <DataField>SILBLabor</DataField>
+        </Field>
+        <Field Name="SILBLaborFormat">
+          <DataField>SILBLaborFormat</DataField>
+        </Field>
+        <Field Name="SILBEquipment">
+          <DataField>SILBEquipment</DataField>
+        </Field>
+        <Field Name="SILBEquipmentFormat">
+          <DataField>SILBEquipmentFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>
