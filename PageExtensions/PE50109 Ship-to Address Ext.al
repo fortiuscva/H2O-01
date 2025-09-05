@@ -17,16 +17,6 @@ pageextension 50109 "Ship-to Address Ext" extends "Ship-to Address"
                 ApplicationArea = All;
             }
         }
-
-        addafter(Name)
-        {
-            field("Name 2"; rec."Name 2")
-            {
-                caption = 'Name 2';
-                ToolTip = 'Specifies the value of the Meter Activity Type field.';
-                ApplicationArea = All;
-            }
-        }
         addafter("Tax Area Code")
         {
             field("Route No."; rec."Route No.")
