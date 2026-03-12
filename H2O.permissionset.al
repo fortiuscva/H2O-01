@@ -34,7 +34,7 @@ permissionset 50100 H2O
         tabledata "Resource Category" = RIMD,
         tabledata "Resource Customer Price" = RIMD,
         tabledata "Resource From Picture Buffer" = RIMD,
-        //tabledata "Resource Price 2"=RIMD,
+    //tabledata "Resource Price 2"=RIMD,
         tabledata "Resource Template" = RIMD,
         tabledata Route = RIMD,
         tabledata "Sales Document Template" = RIMD,
@@ -74,7 +74,7 @@ permissionset 50100 H2O
         table "Resource Category" = X,
         table "Resource Customer Price" = X,
         table "Resource From Picture Buffer" = X,
-        //table "Resource Price 2"=X,
+    //table "Resource Price 2"=X,
         table "Resource Template" = X,
         table Route = X,
         table "Sales Document Template" = X,
@@ -184,5 +184,7 @@ permissionset 50100 H2O
         page "Skip Codes" = X,
         page "Trouble Codes" = X,
         page "Virtual Date" = X,
-        page "Work Order Types" = X;
+        page "Work Order Types" = X,
+        tabledata "Resource Price 2" = RIMD,
+        table "Resource Price 2" = X;
 }
