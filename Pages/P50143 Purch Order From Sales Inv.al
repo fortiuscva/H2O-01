@@ -135,7 +135,7 @@ page 50143 "Purch. Order From Sales Inv"
 
                     trigger OnAction()
                     begin
-                        ItemAvailFormsMgt.ShowItemAvailFromReqLine(Rec, ItemAvailFormsMgt.ByEvent())
+                        ReqLineAvailabilityMgt.ShowItemAvailabilityFromReqLine(Rec, AvailabilityType::"Event")
                     end;
                 }
                 action(Period)
@@ -148,7 +148,7 @@ page 50143 "Purch. Order From Sales Inv"
 
                     trigger OnAction()
                     begin
-                        ItemAvailFormsMgt.ShowItemAvailFromReqLine(Rec, ItemAvailFormsMgt.ByPeriod())
+                        ReqLineAvailabilityMgt.ShowItemAvailabilityFromReqLine(Rec, AvailabilityType::Period)
                     end;
                 }
                 action(Variant)
@@ -161,7 +161,7 @@ page 50143 "Purch. Order From Sales Inv"
 
                     trigger OnAction()
                     begin
-                        ItemAvailFormsMgt.ShowItemAvailFromReqLine(Rec, ItemAvailFormsMgt.ByVariant())
+                        ReqLineAvailabilityMgt.ShowItemAvailabilityFromReqLine(Rec, AvailabilityType::Variant)
                     end;
                 }
                 action(Location)
@@ -175,7 +175,7 @@ page 50143 "Purch. Order From Sales Inv"
 
                     trigger OnAction()
                     begin
-                        ItemAvailFormsMgt.ShowItemAvailFromReqLine(Rec, ItemAvailFormsMgt.ByLocation())
+                        ReqLineAvailabilityMgt.ShowItemAvailabilityFromReqLine(Rec, AvailabilityType::Location)
                     end;
                 }
                 action(Lot)
@@ -199,7 +199,7 @@ page 50143 "Purch. Order From Sales Inv"
 
                     trigger OnAction()
                     begin
-                        ItemAvailFormsMgt.ShowItemAvailFromReqLine(Rec, ItemAvailFormsMgt.ByBOM())
+                        ReqLineAvailabilityMgt.ShowItemAvailabilityFromReqLine(Rec, AvailabilityType::BOM)
                     end;
                 }
 #if not CLEAN21
@@ -296,12 +296,14 @@ page 50143 "Purch. Order From Sales Inv"
 
     var
         ItemAvailFormsMgt: Codeunit "Item Availability Forms Mgt";
+        ReqLineAvailabilityMgt: Codeunit "Req. Line Availability Mgt.";
         OrderNo: Code[20];
         InvoiceNo: code[20];
         EntireOrderIsAvailableTxt: Label 'All items on the sales order are available.';
         ShowAllDocsIsEnable: Boolean;
         VendorName: Text[100];
         CannotCreatePurchaseOrderWithoutVendorErr: Label 'You cannot create purchase orders without specifying a vendor for all lines.';
+        AvailabilityType: Enum "Item Availability Type";
 
 
 

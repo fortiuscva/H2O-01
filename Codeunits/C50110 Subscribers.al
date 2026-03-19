@@ -311,13 +311,12 @@ codeunit 50110 Subscribers
 
 
     //To include Meters in Show Records Navigate function
-    [EventSubscriber(ObjectType::page, page::Navigate, 'OnAfterNavigateShowRecords', '', true, true)]
-    procedure OnAfterNavigateShowRecords(TableID: Integer; DocNoFilter: Text; PostingDateFilter: Text; ItemTrackingSearch: Boolean; var TempDocumentEntry: Record "Document Entry" temporary; SalesInvoiceHeader: Record "Sales Invoice Header"; SalesCrMemoHeader: Record "Sales Cr.Memo Header"; PurchInvHeader: Record "Purch. Inv. Header"; PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr."; ServiceInvoiceHeader: Record "Service Invoice Header"; ServiceCrMemoHeader: Record "Service Cr.Memo Header"; ContactType: Enum "Navigate Contact Type"; ContactNo: Code[250];
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ExtDocNo: Code[250])
+    [EventSubscriber(ObjectType::page, page::Navigate, 'OnAfterShowRecords', '', true, true)]
+    local procedure OnAfterShowRecords(var DocumentEntry: Record "Document Entry"; DocNoFilter: Text; PostingDateFilter: Text; ItemTrackingSearch: Boolean; ContactType: Enum "Navigate Contact Type"; ContactNo: Code[250]; ExtDocNo: Code[250])
     var
         MeterLedgEntry: record "Meter Ledger Entry";
     begin
-        case TempDocumentEntry."Table ID" of
+        case DocumentEntry."Table ID" of
             DATABASE::"Meter Ledger Entry":
                 begin
                     MeterLedgEntry.reset;
