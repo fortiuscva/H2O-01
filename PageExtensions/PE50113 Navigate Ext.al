@@ -10,14 +10,14 @@ pageextension 50113 "Navigate Ext" extends Navigate
 
     procedure InsertIntoDocEntry2(DocTableID: Integer; DocTableName: Text; DocNoOfRecords: Integer)
     begin
-        InsertIntoDocEntry(Rec, DocTableID, "Document Entry Document Type"::" ", DocTableName, DocNoOfRecords);
+        Rec.InsertIntoDocEntry(DocTableID, DocTableName, DocNoOfRecords);
     end;
 
 
 
     procedure InsertIntoDocEntry2(var TempDocumentEntry: Record "Document Entry" temporary; DocTableID: Integer; DocTableName: Text; DocNoOfRecords: Integer)
     begin
-        InsertIntoDocEntry(TempDocumentEntry, DocTableID, "Document Entry Document Type"::" ", DocTableName, DocNoOfRecords);
+        Rec.InsertIntoDocEntry(DocTableID, DocTableName, DocNoOfRecords);
     end;
 
 
