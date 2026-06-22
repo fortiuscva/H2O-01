@@ -337,6 +337,10 @@ tableextension 50100 "Sales Line Ext" extends "Sales Line"
             DataClassification = ToBeClassified;
 
             trigger OnValidate()
+            Var
+                StartdDateOT: DateTime;
+                EndDateOT: DateTime;
+
             begin
                 testfield("Start Date");
                 testfield("Start Time");
@@ -348,32 +352,69 @@ tableextension 50100 "Sales Line Ext" extends "Sales Line"
                 IF NOT H2OCal.findfirst then
                     error(Text50011)
                 else
-                    IF H2OCal.get("Start Date") then begin
-                        // Contract Start Contract Day (Normal Day)
-                        IF (StartDT > H2OCal.ContractST) AND (EndDT < H2OCal.ContractET) AND ("End Date" = "Start Date") then CalcTimeInterval.NormalDay(rec, SalesHeader, H2OCal);
-                        // Early Start - Contract End
-                        IF (StartDT < H2OCal.ContractST) AND (EndDT < H2OCal.ContractET) and ("End Date" = "Start Date") then CalcTimeInterval.EarlyStartContractEnd(rec, SalesHeader, H2OCal);
-                        // Early Start - Late End
-                        IF (StartDT < H2OCal.ContractST) AND (EndDT > H2OCal.ContractET) AND ("End Date" = "Start Date") then CalcTimeInterval.EarlyStartLateEnd(rec, SalesHeader, H2OCal);
-                        // Contract Start - Late End
-                        If (StartDT > H2OCal.ContractST) AND (StartDT < H2OCal.ContractET) AND (EndDT > H2OCal.ContractET) AND ("End Date" = "Start Date") then CalcTimeInterval.ContractStartLateEnd(rec, SalesHeader, H2OCal);
-                        // Late Start after End Day - End Late
-                        If (StartDT > H2OCal.ContractST) AND (StartDT > H2OCal.ContractET) AND (EndDT > H2OCal.ContractET) AND ("End Date" = "Start Date") then CalcTimeInterval.LateStartLateEnd(rec, SalesHeader, H2OCal);
-                        // Overnight
-                        IF (StartDT > H2OCal.ContractET) AND (EndDT > H2OCal.ContractST) AND ("End Date" > "Start Date") then begin
-                            DateDiff := "End Date" - "Start Date";
-                            IF DateDiff = 1 then //overnight
-                                CalcTimeInterval.Overnight(rec, SalesHeader, H2OCal);
-                        end;
-                        // Multiple Days
-                        IF H2OCalEnd.get("End Date") then
-                            IF ("End Date" > "Start Date") then begin
-                                DateDiff := "End Date" - "Start Date";
-                                IF DateDiff >= 1 then //many days
-                                    CalcTimeInterval.ManyDays(rec, SalesHeader, H2OCal, H2OCalEnd)
-                            end;
+                    IF not H2OCal.get("Start Date") then exit;
+
+                StartdDateOT := H2OCAL.ContractST - (5 * 3600000); //5 hours before contract start time
+                EndDateOT := H2OCAL.ContractET - (5 * 3600000); //5 hours before contract end time   
+
+                // else begin
+                //     StartdDateOT := H2OCAL.ContractST; //5 hours before contract start time
+                //     EndDateOT := H2OCAL.ContractET; //5 hours before contract end time   
+                // end;
+                // Contract Start Contract Day (Normal Day)
+                IF (StartDT >= StartdDateOT) AND (EndDT <= EndDateOT) AND ("End Date" = "Start Date") then begin
+                    CalcTimeInterval.NormalDay(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+                // Early Start - Early End
+                IF (StartDT < StartdDateOT) AND (EndDT < EndDateOT) and (EndDT <= StartdDateOT) and ("End Date" = "Start Date") then begin
+                    CalcTimeInterval.EarlyStartEarlyEnd(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+                // Early Start - Contract End
+                IF (StartDT < StartdDateOT) AND (EndDT < EndDateOT) and (EndDT > StartdDateOT) and ("End Date" = "Start Date") then begin
+                    CalcTimeInterval.EarlyStartContractEnd(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+                // Early Start - Late End
+                IF (StartDT < StartdDateOT) AND (EndDT > EndDateOT) AND ("End Date" = "Start Date") then begin
+                    CalcTimeInterval.EarlyStartLateEnd(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+                // Contract Start - Late End
+                If (StartDT >= StartdDateOT) AND (StartDT < EndDateOT) and (EndDT <= (StartdDateOT + (24 * 3600000))) AND ("End Date" >= "Start Date") then begin
+                    CalcTimeInterval.ContractStartLateEnd(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+                // Late Start after End Day - End Late
+                If (StartDT > StartdDateOT) AND (StartDT > EndDateOT) AND (EndDT > EndDateOT) AND ("End Date" = "Start Date") then begin
+                    CalcTimeInterval.LateStartLateEnd(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+                // Overnight
+                IF (StartDT > EndDateOT) AND (EndDT < (StartdDateOT + (24 * 3600000))) AND ("End Date" > "Start Date") then begin
+                    DateDiff := "End Date" - "Start Date";
+                    IF DateDiff = 1 then //overnight
+                        CalcTimeInterval.Overnight(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+
+                // Overnight and strecth to next contract start date
+                If (StartDT >= EndDateOT) and (EndDT >= (StartdDateOT + (24 * 3600000))) and (EndDT <= (EndDateOT + (24 * 3600000))) AND ("End Date" > "Start Date") then begin
+                    CalcTimeInterval.LateStartContractEnd(rec, SalesHeader, H2OCal);
+                    exit;
+                end;
+
+                // Multiple Days
+                IF H2OCalEnd.get("End Date") then
+                    IF ("End Date" > "Start Date") then begin
+                        DateDiff := "End Date" - "Start Date";
+                        IF DateDiff >= 1 then //many days
+                            CalcTimeInterval.ManyDays(rec, SalesHeader, H2OCal, H2OCalEnd)
                     end;
+
             end;
+
         }
         field(50270; "Start Date"; Date)
         {
