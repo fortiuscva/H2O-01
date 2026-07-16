@@ -131,7 +131,11 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := SalesLine."Start Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := H2OCal."Contract Start Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(salesLine."End Date", H2OCal."Contract Start Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity,
+            System.Round(
+                (CreateDateTime(salesLine."End Date", H2OCal."Contract Start Time") -
+                CreateDateTime(SalesLine."Start Date", SalesLine."Start Time"))
+                / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.UpdateMEL;
             SalesLineNew.modify(false);
@@ -145,7 +149,8 @@ codeunit 50120 "Calc Time Interval"
             SalesLine."Start Time" := H2OCal."Contract Start Time";
             SalesLine."End Date" := SalesLine."End Date";
             SalesLine."End Time" := SalesLine."End Time";
-            SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract Start Time")) / 3600000);
+            SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract Start Time")) / 3600000, 0.25, '>'));
+            ;
             SalesLine.CalcResPrice(SalesLine);
             SalesLine.updatemel;
             SalesLine.modify;
@@ -168,7 +173,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := SalesLine."Start Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := H2OCal."Contract End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLine."End Date", H2OCal."Contract End Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", H2OCal."Contract End Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updatemel;
             SalesLineNew.modify(false);
@@ -182,7 +187,8 @@ codeunit 50120 "Calc Time Interval"
             SalesLine."Start Time" := H2OCal."Contract Start Time";
             SalesLine."End Date" := SalesLine."End Date";
             SalesLine."End Time" := SalesLine."End Time";
-            SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract Start Time")) / 3600000);
+            SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract Start Time")) / 3600000, 0.25, '>'));
+            ;
             SalesLine.CalcResPrice(SalesLine);
             SalesLine.updatemel;
             SalesLine.modify;
@@ -241,7 +247,8 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := SalesLine."Start Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := H2OCal."Contract Start Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLine."End Date", H2OCal."Contract Start Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", H2OCal."Contract Start Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
+            ;
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.UpdateMEL;
             SalesLineNew.modify(false);
@@ -263,7 +270,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := H2OCal."Contract End Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := SalesLine."End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 36000000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updatemel;
             SalesLineNew.modify(false);
@@ -278,7 +285,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := H2OCal."Contract Start Time";
         SalesLine."End Date" := SalesLine."End Date";
         SalesLine."End Time" := H2OCal."Contract End Time";
-        SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", H2OCal."Contract End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract Start Time")) / 3600000);
+        SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", H2OCal."Contract End Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract Start Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updatemel;
         SalesLine.modify;
@@ -356,7 +363,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := SalesLine."Start Time";
         SalesLine."End Date" := SalesLine."End Date";
         SalesLine."End Time" := SalesLine."End Time";
-        SalesLine.validate(Quantity, (createDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+        SalesLine.validate(Quantity, System.Round((createDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updatemel;
         SalesLine.modify;
@@ -437,7 +444,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := H2OCal."Contract End Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := SalesLine."End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updatemel;
             SalesLineNew.modify(false);
@@ -460,7 +467,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := H2OCal."Contract End Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := SalesLine."End Time";
-            SalesLineNew.validate(Quantity, (createDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((createDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updatemel;
             SalesLineNew.modify(false);
@@ -475,7 +482,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := SalesLine."Start Time";
         SalesLine."End Date" := SalesLine."Start Date";
         SalesLine."End Time" := H2OCal."Contract End Time";
-        SalesLine.validate(Quantity, (createDateTime(SalesLine."End Date", H2OCal."Contract End Time") - createDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+        SalesLine.validate(Quantity, System.Round((createDateTime(SalesLine."End Date", H2OCal."Contract End Time") - createDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updatemel;
         SalesLine.modify;
@@ -538,7 +545,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := H2OCal."Contract End Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := SalesLine."End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updatemel;
             SalesLineNew.modify(false);
@@ -554,7 +561,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLine."Start Time" := SalesLine."Start Time";
             SalesLine."End Date" := SalesLine."End Date";
             SalesLine."End Time" := SalesLine."End Time";
-            SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000);
+            SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000, 0.25, '>'));
             SalesLine.CalcResPrice(SalesLine);
             SalesLine.updatemel;
             SalesLine.modify;
@@ -669,7 +676,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := SalesLine."Start Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := h2OCal."Contract Start Time";
-            SalesLineNew.validate(Quantity, (createDateTime(SalesLine."End Date", h2OCal."Contract Start Time") - createDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((createDateTime(SalesLine."End Date", h2OCal."Contract Start Time") - createDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updatemel;
             SalesLineNew.modify(false);
@@ -683,7 +690,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := h2OCal."Contract Start Time";
         SalesLine."End Date" := SalesLine."End Date";
         SalesLine."End Time" := SalesLine."End Time";
-        SalesLine.validate(Quantity, (createDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", h2OCal."Contract Start Time")) / 3600000);
+        SalesLine.validate(Quantity, System.Round((createDateTime(SalesLine."End Date", SalesLine."End Time") - createDateTime(SalesLine."Start Date", h2OCal."Contract Start Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updatemel;
         SalesLine.modify;
@@ -762,7 +769,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := SalesLine."Start Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := (H2OCal."Contract Start Time" - (5 * 3600000));
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", SalesLineNew."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", SalesLineNew."Start Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updateMEL;
             SalesLineNew.modify(false);
@@ -785,7 +792,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := H2OCal."Contract End Time";
             SalesLineNew."End Date" := SalesLine."End Date";
             SalesLineNew."End Time" := SalesLine."End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", H2OCal."Contract End Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", H2OCal."Contract End Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updateMEL;
             SalesLineNew.modify(false);
@@ -800,7 +807,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := (H2OCal."Contract Start Time" - (5 * 3600000));
         SalesLine."End Date" := SalesLine."End Date";
         SalesLine."End Time" := H2OCal."Contract End Time";
-        SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", H2OCal."Contract End Time") - CreateDateTime(SalesLine."Start Date", (H2OCal."Contract Start Time" - (5 * 3600000)))) / 3600000);
+        SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", H2OCal."Contract End Time") - CreateDateTime(SalesLine."Start Date", (H2OCal."Contract Start Time" - (5 * 3600000)))) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updateMEL;
         SalesLine.modify;
@@ -835,7 +842,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := SalesLine."Start Time";
         SalesLine."End Date" := SalesLine."End Date";
         SalesLine."End Time" := SalesLine."End Time";
-        SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000);
+        SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updateMEL;
         SalesLine.modify;
@@ -893,7 +900,7 @@ codeunit 50120 "Calc Time Interval"
         SalesLine."Start Time" := H2OCal."Contract End Time";
         SalesLine."End Date" := SalesLine."End Date";
         SalesLine."End Time" := H2OCalEnd."Contract Start Time";
-        SalesLine.validate(Quantity, (CreateDateTime(SalesLine."End Date", H2OCalEnd."Contract Start Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000);
+        SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", H2OCalEnd."Contract Start Time") - CreateDateTime(SalesLine."Start Date", H2OCal."Contract End Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.updateMEL;
         SalesLine.modify;
@@ -915,7 +922,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := SalesLineOriginal."Start Time";
             SalesLineNew."End Date" := SalesLine."Start Date";
             SalesLineNew."End Time" := H2OCal."Contract End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", SalesLineNew."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", SalesLineNew."Start Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updateMEL;
             SalesLineNew.modify(false);
@@ -937,7 +944,7 @@ codeunit 50120 "Calc Time Interval"
             SalesLineNew."Start Time" := (H2OCal."Contract Start Time" - (5 * 3600000));
             SalesLineNew."End Date" := SalesLineOriginal."End Date";
             SalesLineNew."End Time" := SalesLineOriginal."End Time";
-            SalesLineNew.validate(Quantity, (CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", SalesLineNew."Start Time")) / 3600000);
+            SalesLineNew.validate(Quantity, System.Round((CreateDateTime(SalesLineNew."End Date", SalesLineNew."End Time") - CreateDateTime(SalesLineNew."Start Date", SalesLineNew."Start Time")) / 3600000, 0.25, '>'));
             SalesLineNew.CalcResPrice(SalesLineNew);
             SalesLineNew.updateMEL;
             SalesLineNew.modify(false);
