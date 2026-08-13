@@ -10,6 +10,11 @@ pageextension 50133 "Purchase Order Ext" extends "Purchase Order"
                 ToolTip = 'Identifies the associated Work Order No.';
                 ApplicationArea = All;
             }
+            field("Sell-to Customer No.1"; Rec."Sell-to Customer No.")
+            {
+                ApplicationArea = All;
+            }
+
         }
         moveafter(Prepayment; PurchLines)
     }
