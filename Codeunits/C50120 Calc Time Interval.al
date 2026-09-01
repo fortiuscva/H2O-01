@@ -73,7 +73,7 @@ codeunit 50120 "Calc Time Interval"
         If WorkType.findfirst then
             SalesLine."Work Type Code" := WorkType.Code;
 
-        SalesLine.validate(Quantity, ElapsedNoOTQty / 4);
+        SalesLine.validate(Quantity, System.Round((CreateDateTime(SalesLine."End Date", SalesLine."End Time") - CreateDateTime(SalesLine."Start Date", SalesLine."Start Time")) / 3600000, 0.25, '>'));
         SalesLine.CalcResPrice(SalesLine);
         SalesLine.UpdateMEL;
         SalesLine.modify;
