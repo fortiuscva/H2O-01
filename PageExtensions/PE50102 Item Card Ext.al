@@ -33,5 +33,21 @@ pageextension 50102 "Item Card Ext" extends "Item Card"
                 ApplicationArea = All;
             }
         }
+        modify("Price/Profit Calculation")
+        {
+            trigger OnAfterValidate()
+            begin
+                if Rec."Price/Profit Calculation" =
+                   Rec."Price/Profit Calculation"::"Price=HighestUnitCost+20%"
+                then begin
+                    Rec.CalcFields("Highest Unit Cost");
+
+                    Rec."Unit Price" := Rec."Highest Unit Cost" + (Rec."Highest Unit Cost" * 20 / 100);
+
+
+                    //Rec.Modify(true);
+                end;
+            end;
+        }
     }
 }

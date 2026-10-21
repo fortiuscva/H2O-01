@@ -225,6 +225,48 @@ tableextension 50109 "Sales Header Ext" extends "Sales Header"
             DataClassification = ToBeClassified;
             Editable = true;
         }
+        field(50161; "Sent To Remote App"; Boolean)
+        {
+            Caption = 'Sent To Remote App';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50162; "Sent To Remote App Date"; Date)
+        {
+            Caption = 'Sent To Remote App Date';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50163; "Sent To Remote App Time"; Time)
+        {
+            Caption = 'Sent To Remote App Time';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50164; "Received From Remote App"; Boolean)
+        {
+            Caption = 'Received From Remote App';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50165; "Received From Remote App Date"; Date)
+        {
+            Caption = 'Received From Remote App Date';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50166; "Received From Remote App Time"; Time)
+        {
+            Caption = 'Received From Remote App Time';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50167; "Reponsible Technician"; code[20])
+        {
+            Caption = 'Reponsible Technician';
+            DataClassification = ToBeClassified;
+            TableRelation = Resource."No." where(Type = const(Person));
+        }
     }
 
 
