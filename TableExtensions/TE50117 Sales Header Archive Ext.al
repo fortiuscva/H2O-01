@@ -2,39 +2,39 @@ tableextension 50117 "Sales Header Archive Ext" extends "Sales Header Archive"
 {
     fields
     {
-        field(50100; "Sent To Remote App"; Boolean)
+        field(50100; "Sent To Mendix"; Boolean)
         {
-            Caption = 'Sent To Remote App';
+            Caption = 'Sent To Mendix';
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(50101; "Sent To Remote App Date"; Date)
+        field(50101; "Sent To Mendix Date"; Date)
         {
-            Caption = 'Sent To Remote App Date';
+            Caption = 'Sent To Mendix Date';
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(50102; "Sent To Remote App Time"; Time)
+        field(50102; "Sent To Mendix Time"; Time)
         {
-            Caption = 'Sent To Remote App Time';
+            Caption = 'Sent To Mendix Time';
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(50103; "Received From Remote App"; Boolean)
+        field(50103; "Received From Mendix"; Boolean)
         {
-            Caption = 'Received From Remote App';
+            Caption = 'Received From Mendix';
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(50104; "Received From Remote App Date"; Date)
+        field(50104; "Received From Mendix Date"; Date)
         {
-            Caption = 'Received From Remote App Date';
+            Caption = 'Received From Mendix Date';
             DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(50105; "Received From Remote App Time"; Time)
+        field(50105; "Received From Mendix Time"; Time)
         {
-            Caption = 'Received From Remote App Time';
+            Caption = 'Received From Mendix Time';
             DataClassification = ToBeClassified;
             Editable = false;
         }
@@ -52,22 +52,16 @@ tableextension 50117 "Sales Header Archive Ext" extends "Sales Header Archive"
         {
             Caption = 'Material Amount';
             Editable = false;
-            FieldClass = flowfield;
-            CalcFormula = Sum("Sales Line Archive"."Amount Including VAT" WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), Type = CONST(Item)));
         }
         field(50109; "Labor Amount"; Decimal)
         {
             Caption = 'Labor Amount';
             Editable = false;
-            FieldClass = flowfield;
-            CalcFormula = Sum("Sales Line Archive"."Amount Including VAT" WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), Type = CONST(Resource), "Resource Type" = CONST(Person)));
         }
         field(50110; "Equipment Amount"; Decimal)
         {
             Caption = 'Equipment Amount';
             Editable = false;
-            FieldClass = flowfield;
-            CalcFormula = Sum("Sales Line Archive"."Amount Including VAT" WHERE("Document Type" = FIELD("Document Type"), "Document No." = FIELD("No."), Type = CONST(Resource), "Resource Type" = CONST(Machine)));
         }
         field(50111; "Completed Date"; Date)
         {
@@ -105,10 +99,11 @@ tableextension 50117 "Sales Header Archive Ext" extends "Sales Header Archive"
             Caption = 'Work Order Status';
             DataClassification = ToBeClassified;
         }
-        field(50118; "Field Coordinator"; text[50])
+        field(50118; "Field Coordinator"; code[20])
         {
             Caption = 'Field Coordinator';
             DataClassification = ToBeClassified;
+            TableRelation = resource where(Type = Const(Person));
         }
         field(50120; "Include In Batch Invoicing"; boolean)
         {
@@ -125,19 +120,84 @@ tableextension 50117 "Sales Header Archive Ext" extends "Sales Header Archive"
         {
             Caption = 'Invoiced';
             DataClassification = ToBeClassified;
-            Editable = false;
+            //Editable = false;
+        }
+        field(50135; "Work Order Due Date"; date)
+        {
+            Caption = 'Work Order Due Date';
+            DataClassification = ToBeClassified;
+        }
+        field(50140; "Batch Invoice"; boolean)
+        {
+            Caption = 'Batch Invoice';
+            DataClassification = ToBeClassified;
         }
         field(50145; Purpose; Text[100])
         {
             Caption = 'Purpose';
             DataClassification = ToBeClassified;
+        }
+        field(50150; "Auto-Generated"; boolean)
+        {
+            Caption = 'Auto-Generated';
+            DataClassification = ToBeClassified;
             Editable = false;
         }
-        field(50150; "Reponsible Technician"; code[20])
+        field(50155; "Generated From Source No."; code[20])
+        {
+            Caption = 'Generated From Source No.';
+            DataClassification = ToBeClassified;
+            Editable = false;
+            TableRelation = "Sales Document Template"."Source Document No." where("Source Document Type" = CONST(Quote), "Source Document No." = FIELD("Generated From Source No."));
+        }
+        field(50160; "Generated from Meter Read Opp."; Boolean)
+        {
+            Caption = 'Generated From Meter Reading Opportunity';
+            DataClassification = ToBeClassified;
+            Editable = true;
+        }
+        field(50161; "Sent To Remote App"; Boolean)
+        {
+            Caption = 'Sent To Remote App';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50162; "Sent To Remote App Date"; Date)
+        {
+            Caption = 'Sent To Remote App Date';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50163; "Sent To Remote App Time"; Time)
+        {
+            Caption = 'Sent To Remote App Time';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50164; "Received From Remote App"; Boolean)
+        {
+            Caption = 'Received From Remote App';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50165; "Received From Remote App Date"; Date)
+        {
+            Caption = 'Received From Remote App Date';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50166; "Received From Remote App Time"; Time)
+        {
+            Caption = 'Received From Remote App Time';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(50167; "Reponsible Technician"; code[20])
         {
             Caption = 'Reponsible Technician';
             DataClassification = ToBeClassified;
             TableRelation = Resource."No." where(Type = const(Person));
         }
+
     }
 }
