@@ -106,11 +106,10 @@ tableextension 50114 "Sales Shipment Header Ext" extends "Sales Shipment Header"
             Caption = 'Work Order Status';
             DataClassification = ToBeClassified;
         }
-        field(50118; "Field Coordinator"; code[20])
+        field(50118; "Field Coordinator"; text[50])
         {
             Caption = 'Field Coordinator';
             DataClassification = ToBeClassified;
-            TableRelation = resource where(Type = Const(Person));
         }
         field(50120; "Include In Batch Invoicing"; boolean)
         {
