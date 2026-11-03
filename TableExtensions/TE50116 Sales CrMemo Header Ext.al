@@ -172,6 +172,12 @@ tableextension 50116 "Sales Cr.Memo Header Ext" extends "Sales Cr.Memo Header"
             DataClassification = ToBeClassified;
             Editable = false;
         }
+        field(50167; "Reponsible Technician"; code[20])
+        {
+            Caption = 'Reponsible Technician';
+            DataClassification = ToBeClassified;
+            TableRelation = Resource."No." where(Type = const(Person));
+        }
     }
 
 
